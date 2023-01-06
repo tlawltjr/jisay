@@ -1,0 +1,7 @@
+win 
+loss 
+total 
+rate 
+
+
+확장자는 본인메일ID.text
