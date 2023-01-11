@@ -15,4 +15,5 @@ module myjava {
 
 	requires java.desktop;
 	requires lombok;
+	requires org.json;
 }
