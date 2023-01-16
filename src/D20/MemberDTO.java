@@ -4,17 +4,19 @@ public class MemberDTO{
 	
 	private String ID;
 	private String PW;
-	MemberDAO memDAO;
-	ChangePass changePass;
-	
+	private String email;
+	private MemberDAO memDAO;
 
 	public MemberDTO(MemberDAO memDAO) {
 		this.memDAO = memDAO;
-	
-	
 	}
 	
-	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
 
 	public String getPW() {
@@ -26,11 +28,11 @@ public class MemberDTO{
 	}
 
 	public String getID() {
-		return ID;
+		return this.email.substring(0,this.email.indexOf('@'));
 	}
 
 	public void setID(String iD) {
 		ID = iD;
 	}
-			
+	
 }
