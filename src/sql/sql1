@@ -1,0 +1,8 @@
+Select * from users;
+
+
+Select count(userid) from Users Where id = '심지석'
+Select userpass from where userid = '심지석'
+Select * from users where userid = 'jiseok'
+update USERS
+Set reg_date = sysdate;

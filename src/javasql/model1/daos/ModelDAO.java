@@ -18,37 +18,24 @@ public class ModelDAO {
  * 제외하고는 모두 private으로 처리한다
  */
 	private static Connection conn;
-	private static final String acount;
-	private static final String accPass;
-	private static final String dbSchema;
-	
-	static {
-		acount = "c##js";
-		accPass = "0000";
-		dbSchema = "jdbc:oracle:thin:@localhost:1521/xe";
-	}
+//	private static final String acount;//지울 곳
+//	private static final String accPass;
+//	private static final String dbSchema;
+//	
+//	static {
+//		acount = "c##js";
+//		accPass = "0000";
+//		dbSchema = "jdbc:oracle:thin:@localhost:1521/xe";
+//	}
 	private static ModelDAO dao = new ModelDAO();
 	
 	private ModelDAO() {
-		init();
 	}
 	/*
 	 *  이 메서드는 DAO인스턴스 생성시에 필요한 초기화 작업을 모두 처리합니다
 	 *  현재는 Connection만 맺도록 하는 작업만 처리합니다
 	 */
-	private void init() {
-		try {
-			Class.forName("oracle.jdbc.OracleDriver");
-			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/xe", "c##js", "0000");
-			
-			System.out.println("컨넥션 ok 정보 --> " + conn);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			System.out.println("Connection 생성시 예외 발생함");
-			System.out.println("예외 내용 : " + e.getMessage());
-		}
-		
-	}
+	
 	public static ModelDAO getInstance() {
 		return dao;
 	}
@@ -164,7 +151,7 @@ public class ModelDAO {
 	}
 	
 	
-	private void closer() {
+	private void closer(Connection conn) {
 		if(this.conn != null) {
 			try {
 				conn.close();
@@ -175,6 +162,16 @@ public class ModelDAO {
 	}
 	//내부에서 사용한 Connection 리턴 메서드 정의
 	private static Connection getConnection() {
+		try {
+			Class.forName("oracle.jdbc.OracleDriver");
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/xe", "c##js", "0000");
+			
+			System.out.println("컨넥션 ok 정보 --> " + conn);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("Connection 생성시 예외 발생함");
+			System.out.println("예외 내용 : " + e.getMessage());
+		}
 		return conn;
 	}
 	//회원가입이나 게시판의 새글등이 DB에 쓰여지도록(insert)메서드를 구현합니다
