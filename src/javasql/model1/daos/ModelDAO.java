@@ -17,6 +17,7 @@ public class ModelDAO {
  * 외부에 Instance를 제공하는 메서드와 기타, SQL을 처리하는 메서드만 
  * 제외하고는 모두 private으로 처리한다
  */
+	//asd
 	private static Connection conn;
 //	private static final String acount;//지울 곳
 //	private static final String accPass;
