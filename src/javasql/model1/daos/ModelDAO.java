@@ -162,7 +162,7 @@ public class ModelDAO {
 		}
 	}
 	//내부에서 사용한 Connection 리턴 메서드 정의
-	private static Connection getConnection() {
+	private  Connection getConnection() {
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
 			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/xe", "c##js", "0000");
